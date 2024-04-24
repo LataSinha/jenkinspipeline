@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+ 
+    stages {
+        stage('Checkout') {
+            steps {
+            	echo "Downloading code from git."
+                checkout scm
+            }
+        }
+        
+        stage('Build') {
+            steps {
+            	echo "Building the project and skipping test cases."
+                sh 'mvn clean package -DskipTests'
+            }
+        }
+        
+        stage('Test') {
+            steps {
+            	echo "Permorming unit testing."
+                sh 'mvn test'
+            }
+        }
+    }
+}
