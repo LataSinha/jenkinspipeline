@@ -1,4 +1,5 @@
 FROM openjdk:17
 WORKDIR /app
-COPY /target/* /app/spring-boot-application.jar
+COPY .jenkins/workspace/MiniassignmnetDeploy/miniassignment/target/*.jar  /app/spring-boot-application.jar
 CMD ["java", "-jar", "spring-boot-application.jar"]
+
